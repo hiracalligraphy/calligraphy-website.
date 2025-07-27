@@ -1,0 +1,635 @@
+/* Import fonts (if any, handled in HTML head) */
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Fixed, subtle background image always behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  z-index: -1;
+  background: url('../images/succulents.webp') no-repeat center center fixed;
+  background-size: cover;
+  opacity: 0.51; /* Adjust intensity */
+  pointer-events: none;
+}
+
+/* Header */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.60);
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+#gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.50); /* More opaque */
+  padding: 10px 20px; /* Thinner */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+  transition: top 0.3s ease;
+}
+
+#gallery-header .site-title {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 48px;
+  color: #4a615e;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+}
+#contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.50); /* More opaque */
+  padding: 10px 20px; /* Thinner */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #ccc;
+  transition: top 0.3s ease;
+}
+
+#contact-header .site-title {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 48px;
+  color: #4a615e;
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: #4a615e;
+  font-weight: 600;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #4a615e;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 8px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #7aa59c;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  z-index: 999;
+}
+
+.dropdown-content li {
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Hero Section */
+.hero {
+  height: 80vh;
+  background: rgba(255,255,255,0.3);
+  background-blend-mode: overlay;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Gallery */
+.gallery {
+  padding: 60px 40px;
+  background: transparent;
+}
+
+.gallery h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  text-align: center;
+  color: #4a615e;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+/* Reviews */
+.reviews {
+  background: transparent;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.reviews h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: #4a615e;
+  margin-bottom: 30px;
+}
+
+.testimonial {
+  max-width: 700px;
+  margin: 0 auto;
+  font-style: italic;
+  font-size: 18px;
+  color: #555;
+}
+
+/* About Section */
+.about-section {
+  margin: 60px auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.about-image img {
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.about-text {
+  max-width: 600px;
+}
+
+.about-text h2 {
+  font-family: 'Georgia', serif;
+  font-size: 28px;
+  color: #2f4f4f;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.signature {
+  font-style: italic;
+  text-align: right;
+  margin-top: 15px;
+  color: #555;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 100%;
+  }
+}
+
+/* Headers & Titles */
+h1, .site-title {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 56px;
+  color: #4a615e;
+  font-weight: normal;
+  text-align: center;
+  margin: 20px 0;
+  transition: font-size 0.4s ease;
+}
+
+.site-title.shrink {
+  font-size: 32px;
+}
+
+/* Newsletter */
+.newsletter-section {
+  background-color: transparent;
+  padding: 60px 20px;
+  text-align: center;
+  font-family: Georgia, serif;
+  color: #0a0808;
+}
+
+.newsletter-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.newsletter-text h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #0a0808;
+}
+
+.newsletter-text p {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.subscribe-form {
+  margin-top: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+
+.subscribe-form h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #0a0808;
+}
+
+.subscribe-form p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #444;
+}
+
+.subscribe-form .form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.subscribe-form input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.subscribe-form input:focus {
+  border-color: #6a9c89;
+}
+
+@media (max-width: 600px) {
+  .subscribe-form .form-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subscribe-form input {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.subscribe-form button {
+  padding: 12px 25px;
+  font-size: 1em;
+  background-color: #6a9c89;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-form button:hover {
+  background-color: #1c0866;
+}
+
+/* Fade-in Animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Branding Section */
+.branding-section {
+  padding: 60px 20px;
+  background: transparent;
+  text-align: center;
+}
+
+.branding-heading {
+  font-family: 'Herr Von Muellerhoff', cursive;
+  font-size: 52px;
+  color: #344340;
+    font-weight: normal;
+  margin: 20px 0;
+}
+
+.branding-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.branding-block {
+  background: rgba(255,255,255,0.9);
+  padding: 30px 20px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  color: #444; /* Default text color */
+}
+
+.branding-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.branding-block h3 {
+  font-size: 24px;
+  color: #2e4a47;
+  margin-bottom: 10px;
+}
+
+.branding-block p {
+  font-size: 16px;
+  color: #5c5c5c;
+}
+
+/* Background images for specific branding blocks with overlays */
+.branding-block.home {
+  background-image: url('../images/Contemporary-Home-Decor-16.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.branding-block.wedding {
+  background-image: url('../images/marriage.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.branding-block.classroom {
+  background-image: url('../images/empty-classroom.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.branding-block.gifting {
+  background-image: url('../images/gifting.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+/* Overlay to improve text contrast */
+.branding-block.home::before,
+.branding-block.wedding::before,
+.branding-block.classroom::before,
+.branding-block.gifting::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  z-index: 0;
+}
+
+/* Ensure text stays above overlay */
+.branding-block.home > *,
+.branding-block.wedding > *,
+.branding-block.classroom > *,
+.branding-block.gifting > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Add subtle white text shadow */
+.branding-block.home h3,
+.branding-block.wedding h3,
+.branding-block.classroom h3,
+.branding-block.gifting h3,
+.branding-block.home p,
+.branding-block.wedding p,
+.branding-block.classroom p,
+.branding-block.gifting p {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+}
+
+/* Increase contrast for the branding blocks */
+.branding-block.home,
+.branding-block.wedding,
+.branding-block.classroom,
+.branding-block.gifting {
+  filter: contrast(120%);
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* Arabic Marquee Bottom */
+.bottom-marquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+  color: #4a615e;
+  padding: 10px 0;
+  font-size: 2.4rem;
+  text-align: center;
+  z-index: 1000;
+  font-family: 'Lateef', 'Amiri', 'Scheherazade', serif;
+  direction: rtl;
+}
+
+/* Use one container for marquee and animate this */
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  letter-spacing: 1.5em;
+  font-family: 'Lateef', serif;
+  font-variant-ligatures: none;
+  font-weight: 400;
+  font-size: 2.2rem;
+  user-select: none;
+
+  /* Animation applied here for scrolling */
+  animation: scroll-left 20s linear infinite;
+}
+
+/* Animate from fully right (100%) to fully left (-100%) for full loop */
+/* IMPORTANT: Duplicate your marquee text in HTML for seamless loop! */
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+.gallery-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-section .title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* You don't need both .gallery-grid and .masonry-gallery unless you're using both layouts */
+
+.masonry-gallery {
+  column-count: 3;
+  column-gap: 1rem;
+  padding: 1rem 0;
+}
+
+.masonry-gallery img {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  display: block;
+  break-inside: avoid; /* Prevents image split */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.masonry-gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .masonry-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .masonry-gallery {
+    column-count: 1;
+  }
+}
+.contact-main {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.contact-main h2 {
+  font-size: 28px;
+  color: #4a615e;
+  margin-bottom: 10px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 18px;
+  margin: 12px 0;
+}
+
+.contact-list i {
+  font-size: 20px;
+  color: #4a615e;
+}
+
+.contact-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.contact-list a:hover {
+  color: #b87333;
+  text-decoration: underline;
+}
+
+
+
+
+

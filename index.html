@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calligraphy by Hira Fatima</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1 class="site-title">Calligraphy by Hira Fatima</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <div class="about-container">
+        <div class="about-image">
+          <img src="images/bck.jpeg" alt="Arabic Calligraphy Artwork" />
+        </div>
+        <div class="about-text">
+          <h2>Qur’anic Calligraphy With Spiritual Elegance</h2>
+          <p>
+            Assalamu Alaikum! I'm deeply grateful you're here. What started as a personal journey to reflect on the verses of the Holy Qur’an has grown into a passion for creating timeless expressions of divine words. Each stroke is not just ink on paper—it is an act of devotion, love, and connection with our Creator.
+          </p>
+          <p>
+            Whether you're looking to gift someone a meaningful piece or bring barakah into your own home, these artworks are created with care and sincerity. I invite you to explore and feel the presence of peace that each design carries.
+          </p>
+          <p class="signature">— Hira Fatima</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="branding-section">
+    <h2 class="branding-heading">Calligraphy for Every Occasion</h2>
+    <div class="branding-grid">
+      <div class="branding-block home">
+        <h3>For Homes</h3>
+        <p>Bring barakah and serenity into your living space.</p>
+      </div>
+      <div class="branding-block wedding">
+        <h3>For Weddings</h3>
+        <p>Gift your spouse or decorate your Nikkah with elegance.</p>
+      </div>
+      <div class="branding-block classroom">
+        <h3>For Classrooms</h3>
+        <p>Inspire young hearts with spiritual wisdom.</p>
+      </div>
+      <div class="branding-block gifting">
+        <h3>For Gifting</h3>
+        <p>Meaningful calligraphy gifts for loved ones.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter-section fade-in-section">
+    <div class="newsletter-container">
+      <div class="newsletter-text">
+        <h2>Stay in the loop with our newsletter!</h2>
+        <p>Sign up for the latest calligraphy updates, offerings, event tips, and inspirations!</p>
+        <p><strong>Sign up today and receive a Free Decoration Guide!</strong></p>
+      </div>
+
+      <form id="newsletterForm" class="subscribe-form">
+        <h3>Subscribe</h3>
+        <p>Sign up with your email address to receive news and updates.</p>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+        </div>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Bottom Marquee (Hidden by default) -->
+  <div id="arabicMarquee" class="bottom-marquee hidden">
+    <div class="marquee-track">
+      <span class="marquee-content">
+        ا ب ت ث ج ح خ د ذ ر ز س ش ص ض ط ظ ع غ ف ق ك ل م ن ه و ي &nbsp;&nbsp;&nbsp;
+      </span>
+    </div>
+  </div>
+
+  <!-- Scroll and Marquee Scripts -->
+  <script>
+    // Header shrink effect on scroll
+    const title = document.querySelector('.site-title');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        title.classList.add('shrink');
+      } else {
+        title.classList.remove('shrink');
+      }
+    });
+
+    // Fade in sections on scroll
+    const faders = document.querySelectorAll('.fade-in-section');
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+
+    // Show/hide marquee at bottom of page
+    window.addEventListener("scroll", function () {
+      const marquee = document.getElementById("arabicMarquee");
+      const scrollTop = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      if (scrollTop + windowHeight >= docHeight - 10) {
+        marquee.classList.remove("hidden");
+      } else {
+        marquee.classList.add("hidden");
+      }
+    });
+
+    // Newsletter form handler
+    document.getElementById("newsletterForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+
+      // Send to Formspree
+      const formspreeData = new FormData();
+      formspreeData.append("name", name);
+      formspreeData.append("email", email);
+
+      fetch("https://formspree.io/f/xvgqrpvb", {
+        method: "POST",
+        body: formspreeData
+      }).catch(err => console.error("Formspree error", err));
+
+      // Send to Google Form (replace entry IDs with your actual field IDs!)
+      const googleFormData = new FormData();
+      googleFormData.append("entry.562334743", name);   // update this!
+      googleFormData.append("entry.1128991051", email); // and this!
+
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLScgIq0f6wib_1HQDSPkkyOV23Dx7MzI8lSwVtSbexZIlv71sA/formResponse", {
+        method: "POST",
+        mode: "no-cors",
+        body: googleFormData
+      }).then(() => {
+        alert("Thank you for subscribing!");
+        form.reset();
+      }).catch(err => console.error("Google Form error", err));
+    });
+  </script>
+</body>
+</html>
