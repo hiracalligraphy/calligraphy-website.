@@ -666,6 +666,53 @@ h1, .site-title {
 .image-container:hover .size-label {
   opacity: 1;
 }
+.gallery-bottom-marquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;   /* No white boundary, fully transparent */
+  color: #4a615e;
+  padding: 30px 0;
+  font-size: 2.2rem;
+  text-align: center;
+  z-index: 1000;
+  font-family: 'Lateef', 'Amiri', 'Scheherazade', serif;
+  direction: rtl;
+  border: none;              /* Remove any border or box-shadow */
+  box-shadow: none;
+  opacity: 1;                /* Fully visible, no transparency fade */
+  transition: none;
+}
+
+.gallery-marquee-track {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.gallery-marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  letter-spacing: 0.2em;
+  font-family: 'Lateef', serif;
+  font-variant-ligatures: none;
+  font-weight: 400;
+  font-size: 1.2rem;
+  user-select: none;
+  animation: scroll-left 60s linear infinite;
+}
+
+/* Keyframes to match your homepage animation */
+@keyframes scroll-left {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.hidden {
+  display: none !important;
+}
+
 
 
 
