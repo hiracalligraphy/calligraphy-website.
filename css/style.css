@@ -628,28 +628,45 @@ h1, .site-title {
   color: #b87333;
   text-decoration: underline;
 }
-.image-container {
+/* ensures container works with masonry layout */
+.masonry-gallery .image-container {
   position: relative;
-  
+  display: inline-block;
+  width: 100%;
 }
 
+/* ensure image is block-level and fills container width */
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* smoother hover scaling anchored within container */
+.image-container:hover img {
+  transform: scale(1.03);
+}
+
+/* styling the label */
 .size-label {
   position: absolute;
-  bottom: 8px;
-  right: 8px;
-  background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
-  font-size: 14px;
-  padding: 4px 10px;
-  border-radius: 8px;
-  backdrop-filter: blur(2px); /* Optional: adds a frosted glass effect */
+  font-size: 15px;
+  padding: 5px 12px;
+  border-radius: 6px;
   opacity: 0;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
 }
 
+/* reveal label when hovering over container */
 .image-container:hover .size-label {
   opacity: 1;
 }
+
 
 
 
