@@ -179,9 +179,36 @@
 
   <footer>
     <p>&copy; 2025 Hira Fatima</p>
-  </footer>
+  </footer
+ <script>
+  // Header shrink effect for gallery page
+  const galleryTitle = document.querySelector('.gallery-title');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      galleryTitle.classList.add('shrink');
+    } else {
+      galleryTitle.classList.remove('shrink');
+    }
+  });
+
+  // Show/hide gallery marquee when near bottom
+  window.addEventListener("scroll", function () {
+    const marquee = document.getElementById("galleryMarquee");
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+
+    if (scrollTop + windowHeight >= docHeight - 10) {
+      marquee.classList.remove("hidden");
+    } else {
+      marquee.classList.add("hidden");
+    }
+  });
+</script>
+    
 </body>
 </html>
+
 
 
 
