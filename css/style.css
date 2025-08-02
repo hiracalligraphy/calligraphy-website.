@@ -628,6 +628,29 @@ h1, .site-title {
   color: #b87333;
   text-decoration: underline;
 }
+.image-container {
+  position: relative;
+  
+}
+
+.size-label {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+  color: #fff;
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  backdrop-filter: blur(2px); /* Optional: adds a frosted glass effect */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .size-label {
+  opacity: 1;
+}
+
 
 
 
