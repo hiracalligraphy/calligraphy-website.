@@ -700,7 +700,7 @@ h1, .site-title {
   font-weight: 400;
   font-size: 1.2rem;
   user-select: none;
-  animation: scroll-left 60s linear infinite;
+  animation: scroll-left 50s linear infinite;
 }
 
 /* Keyframes to match your homepage animation */
@@ -712,6 +712,7 @@ h1, .site-title {
 .hidden {
   display: none !important;
 }
+
 
 
 
