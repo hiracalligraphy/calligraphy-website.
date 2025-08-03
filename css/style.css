@@ -673,7 +673,7 @@ h1, .site-title {
   width: 100%;
   overflow: hidden;
   background: transparent;   /* No white boundary, fully transparent */
-  color: #4a615e;
+  color: #445a5a;
   padding: 30px 0;
   font-size: 2.2rem;
   text-align: center;
@@ -712,6 +712,7 @@ h1, .site-title {
 .hidden {
   display: none !important;
 }
+
 
 
 
